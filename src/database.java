@@ -30,17 +30,19 @@ void write(String text){
     
     Stirng readData(String text){
         File myObj = new File(this.fileName);
+        String data ="";
         if (myObj.exists()) {
-            Scanner s =search(text);
-            String data= s.nextLine();
-            myReader.close();
-            return data;
+            Scanner s =search(text,myObj);
+            data = s.nextLine();
+            s.close();
+                
         }
         else
             System.out.println("The file does not exist.");
+        return data;
         }
 
-    Scanner search(String text){
+    Scanner search(String text ,File myObj){
             Scanner myReader = new Scanner(myObj);
             while (myReader.hasNextLine() && myReader.nextLine() != text) {
                 myReader.nextLine();
@@ -50,7 +52,7 @@ void write(String text){
     
     void delete(String text){
         Scanner s = search(String text);
-        
+    
         }
 
     }
