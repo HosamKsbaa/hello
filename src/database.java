@@ -1,13 +1,17 @@
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
+
+
+
 import java.io.File;
 
 class FileDataBase implements InterfaceDB{
 
 String fileName;
 
-void write(String text){
+@Override
+public void write(String text){
     try {
       File myObj = new File(this.fileName);
       FileWriter myWriter = new FileWriter(this.fileName);
@@ -24,11 +28,11 @@ void write(String text){
         System.out.println("Successfully wrote to the file.");
         } 
     catch (IOException e) {
-        System.out.println("An error occurred."+e.getMessage() );
+        System.out.println("An error occurred inside write function"+e.getMessage() );
         }
     }
-    
-    Stirng readData(String text){
+    @Override
+    public String readData(String text){
         File myObj = new File(this.fileName);
         String data ="";
         if (myObj.exists()) {
@@ -38,20 +42,30 @@ void write(String text){
                 
         }
         else
-            System.out.println("The file does not exist.");
+            System.out.println("Error file used inside readData function doesn't exist");
         return data;
         }
-
-    Scanner search(String text ,File myObj){
-            Scanner myReader = new Scanner(myObj);
+        
+        @Override
+        public Scanner search(String text ,File myObj){
+            Scanner myReader;
+            try{
+             myReader= new Scanner(myObj);
             while (myReader.hasNextLine() && myReader.nextLine() != text) {
                 myReader.nextLine();
-            }
-            return myReader;
+        }
     }
     
-    void delete(String text){
-        Scanner s = search(String text);
+        catch(Exception e){
+            System.out.println("Error file used inside search function doesn't exist"+e.getMessage());
+             myReader = new Scanner("");
+        }
+        return myReader;
+    }
+    @Override
+    public void delete(String text){
+        File myObj =new File(this.fileName);
+        Scanner s = search(text,myObj);
     
         }
 
