@@ -11,8 +11,7 @@ public class Customers {
     }
 
 
-    public void notifyStaffwithcancelCustomer(int currentCustomer){
-        Io.print("up next Customer number");
-        Io.print(String.valueOf(currentCustomer));
+    public void notifyStaffwithcancelCustomer(){
+        Io.print("up next Customer number ");
         }
 }

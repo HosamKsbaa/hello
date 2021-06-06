@@ -35,7 +35,7 @@ public class QueueManger {
                 stuff.notifyStaffWithNewCustomer();
             }  else if (theOptions == 2) {
                 stuff.processAClient();
-                customers.notifyStaffwithcancelCustomer(1);
+                customers.notifyStaffwithcancelCustomer();
 
             } else if (theOptions == 3) {
                 System.exit(1);

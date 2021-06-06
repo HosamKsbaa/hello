@@ -116,59 +116,16 @@ public void write(String text){
         else 
         System.out.println("File already exists.");
         
-        FileWriter myWriter = new FileWriter(this.fileName);
+        FileWriter myWriter = new FileWriter(this.fileName,true);
         myWriter.append(text);
+        myWriter.append("\n");
         myWriter.close();
         System.out.println("Successfully wrote to the file.");
         } 
     catch (IOException e) {
         System.out.println("An error occurred inside write function"+e.getMessage() );
         }
-    }
-
-    @Override
-    public String readData(String text){
-        File myObj = new File(this.fileName);
-        String data ="";
-        if (myObj.exists()) {
-            data =search(text);
-            return data;
-        }
-        else
-            System.out.println("Error file used inside readData function doesn't exist");
-            return "";
-        }
-        
+    }   
      
-     
-     
-        @Override
-        public String search(String text){
-            String data="";            
-            Scanner  myReader;
-            try{
-            myReader= new Scanner(new File(this.fileName));
-        }
-        catch(Exception e){
-            System.out.println("Error file used inside search function doesn't exist");
-             return "nothing there is error";
-        }
-        while (myReader.hasNextLine() && myReader.) {
-            data=myReader.nextLine();
-        }
-        return data;
-    }
     
-
-
-
-
-    @Override
-    public boolean check(String text){        
-         String t = search(text);
-        if(t =="finish")
-            return false;
-        else
-            return true;
-        }
     }
