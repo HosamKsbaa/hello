@@ -1,26 +1,34 @@
 package File;
 import java.io.IOException;
+import java.io.RandomAccessFile;
 import java.util.Scanner;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 
 class FileDataBase implements InterfaceDB{
 
 String fileName;
 
+
+
+ 
 @Override
 public void write(String text){
-    try {
+
+   try {
       File myObj = new File(this.fileName);
-      FileWriter myWriter = new FileWriter(this.fileName);
 
-        if (myObj.createNewFile()) 
+      
+        if (!myObj.exists()){
+        myObj.createNewFile();
         System.out.println("File created: " + myObj.getName());
-
+        Io.print("Create file successfully");
+    }
         else 
         System.out.println("File already exists.");
         
-
+        FileWriter myWriter = new FileWriter(this.fileName);
         myWriter.append(text);
         myWriter.close();
         System.out.println("Successfully wrote to the file.");
@@ -37,10 +45,12 @@ public void write(String text){
         if (myObj.exists()) {
             Scanner s =search(text);
             data = s.nextLine();
-            s.close();}
+            s.close();
+            return data;
+        }
         else
             System.out.println("Error file used inside readData function doesn't exist");
-        return data;
+            return "";
         }
         
         @Override
@@ -54,7 +64,7 @@ public void write(String text){
     }
     
         catch(Exception e){
-            System.out.println("Error file used inside search function doesn't exist"+e.getMessage());
+            System.out.println("Error file used inside search function doesn't exist");
              myReader = new Scanner("");
         }
         return myReader;

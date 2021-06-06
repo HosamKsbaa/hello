@@ -7,7 +7,7 @@ public class Io {
     static Scanner S=new Scanner(System.in); 
 
     public static String cin(String message){
-            Io.print("yourchoise");
+            Io.print(message);
 
         String result =S.nextLine();
 
