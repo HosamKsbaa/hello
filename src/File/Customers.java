@@ -1,7 +1,5 @@
 package File;
 
-import utility.Io;
-
 public class Customers {
     
     public  void reserveTicket(){
@@ -13,7 +11,7 @@ public class Customers {
          
     }
     public void notifyStaffwithcancelCustomer(int currentCustomer){
-        String x=String.format("A string %s ", currentCustomer+1 ," get ready ");
-        Io.print(x);
-    }
+        Io.print("up next Customer number");
+        Io.print(String.valueOf(currentCustomer));
+        }
 }
