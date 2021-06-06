@@ -1,2 +1,1 @@
-2021/06/06 09:51:23,hello 
-2021/06/06 09:51:33,boyyy
+{DateTime:2021/06/06 11:47:41,UserName:User1,sex:null,age:null,waitingFor:null,VIPness:null,regulerCustomer:null,fName:null,LastName:null,phoneNumber:null,Email:null,}

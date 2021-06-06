@@ -1,11 +1,13 @@
 package File;
 
 import java.io.IOException;
+import java.time.Duration;
 
 public class QueueManger {
-    public int currentCounter;
+    public static  int length=0;
     public Stuff stuff=new Stuff();
     public Customers customers=new Customers();
+    
 
     public void StrartTheAPp() throws IOException {
         // init file 
@@ -31,10 +33,14 @@ public class QueueManger {
  
 
             if (theOptions == 1) {
+                
                 customers.reserveTicket(Io.cin("enter your name"));
+                length++;
                 stuff.notifyStaffWithNewCustomer();
+
             }  else if (theOptions == 2) {
                 stuff.processAClient();
+                length--;
                 customers.notifyStaffwithcancelCustomer();
 
             } else if (theOptions == 3) {
