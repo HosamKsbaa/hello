@@ -1,10 +1,8 @@
-import java.io.FileWriter;
+package File;
 import java.io.IOException;
 import java.util.Scanner;
-
-
-
 import java.io.File;
+import java.io.FileWriter;
 
 class FileDataBase implements InterfaceDB{
 
@@ -23,7 +21,7 @@ public void write(String text){
         System.out.println("File already exists.");
         
 
-        myWriter.write(text);
+        myWriter.append(text);
         myWriter.close();
         System.out.println("Successfully wrote to the file.");
         } 
@@ -31,26 +29,25 @@ public void write(String text){
         System.out.println("An error occurred inside write function"+e.getMessage() );
         }
     }
+
     @Override
     public String readData(String text){
         File myObj = new File(this.fileName);
         String data ="";
         if (myObj.exists()) {
-            Scanner s =search(text,myObj);
+            Scanner s =search(text);
             data = s.nextLine();
-            s.close();
-                
-        }
+            s.close();}
         else
             System.out.println("Error file used inside readData function doesn't exist");
         return data;
         }
         
         @Override
-        public Scanner search(String text ,File myObj){
+        public Scanner search(String text){
             Scanner myReader;
             try{
-             myReader= new Scanner(myObj);
+             myReader= new Scanner(new File(this.fileName));
             while (myReader.hasNextLine() && myReader.nextLine() != text) {
                 myReader.nextLine();
         }
@@ -62,11 +59,14 @@ public void write(String text){
         }
         return myReader;
     }
-    @Override
-    public void delete(String text){
-        File myObj =new File(this.fileName);
-        Scanner s = search(text,myObj);
     
+    @Override
+    public boolean check(String text){
+        Scanner s =search(text);
+         String t=s.nextLine();
+        if(t =="finish")
+            return false;
+        else
+            return true;
         }
-
     }
