@@ -29,7 +29,7 @@ public class QueueManger {
 
 
             if (theOptions == 1) {
-                customers.reserveTicket();
+                customers.reserveTicket("Lamia");
                 stuff.notifyStaffWithNewCustomer();
             } else if (theOptions == 2) {
                 customers.cancelReservation();
